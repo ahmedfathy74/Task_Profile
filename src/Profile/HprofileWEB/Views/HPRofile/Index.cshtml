@@ -5,22 +5,161 @@
 }
 
 <div class="container">
-    <div class="container">
-        <div class="container ">
+    <div>
+        <div>
             <img src="~/img/cover page photo.png" class="hpback" />
         </div>
-        <div class="container">
+        <div>
             <img src="~/img/profile picture.png" class="pfimage" />
             <span class="namee">Ahmed Fathy</span>
             <span class="job">Software Developer</span>
         </div>
     </div>
-    <div class="container">
+    <div>
         <span class="backname">Background</span>
     </div>
-    <div class="container backworksty">
-        <span class="workExpname">Work Exerience
-        <img src="~/img/icon- edit.png" class="iconimg" />
+    <div class=" backworksty">
+        <span class="workExpname">
+            Work Exerience
+            <img src="~/img/icon- edit.png" class="iconimg" />
+            <button type="button" class="add-work-style" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fa-solid fa-plus"></i>
+            </button>
         </span>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">HprofileWorkExperience</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="form1">
+                        <form>
+                            <div class="mb-3">
+                                <label for="Title-name" class="col-form-label">Title*</label>
+                                <input type="text" class="form-control" id="Title-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="Employer-name" class="col-form-label">Employer*</label>
+                                <input type="text" class="form-control" id="Employer-name">
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    I am currently working in this role
+                                </label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="StartDate" class="col-form-label">StartDate*</label>
+                                <label for="EndDate" class="col-form-label" style="margin-left: 140px;">EndDate*</label>
+                            </div>
+                            <div class="mb-3">
+
+                                <div class="btn-group">
+                                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Month
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        li>
+                                        <a class="dropdown-item" href="#">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Year
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        li>
+                                        <a class="dropdown-item" href="#">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Month
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        li>
+                                        <a class="dropdown-item" href="#">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Year
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        li>
+                                        <a class="dropdown-item" href="#">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="City-name" class="col-form-label">City / Branch</label>
+                                <input type="text" class="form-control" id="City-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">My job Description And Responsibalites</label>
+                                <textarea class="form-control" id="message-text"></textarea>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="SkillBank">
+                                <label class="form-check-label" for="SkillBank">
+                                    SkillBankHelpful
+                                </label>
+                            </div>
+                            <button type="button" class="btn btn-primary add-workdata">Save changes</button>
+                            @*<button type="button" class="btn btn-primary add-workdata" onclick="triggerAdd()">Save changes</button>*@
+                        </form>
+                    </div>
+                    @*<div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        
+                    </div>*@
+                </div>
+            </div>
+        </div>
+        <div id="tblProducts">
+            @*<div class="card mb-3 " style="max-width: 700px;">
+                <div class="row g-0">
+                    <div class="col-md-1 p-3">
+                        <img src="~/img/icon-workexperience.png" />
+                    </div>
+                    <div class="col-md-11">
+                        <div class="card-body">
+                            <div class="row d-flex ">
+                                <span class="p-2 flex-grow-1 card-title titel-exper-style"></span>
+                                <div class="p-2 ">
+                                    <button class="edit-work-style"> <i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button class="edit-work-style"><i class="fa-solid fa-trash-can"></i></button>
+                                </div>
+                            </div>
+                            <p class="card-text company-exper-style"></p>
+                            <p class=" card-text des-exper-style"> </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>*@
+
+        </div>
+
+
     </div>
 </div>
+

@@ -26,12 +26,23 @@ namespace ProfileAPI
         }
 
         public IConfiguration Configuration { get; }
-
+        string text = "";
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(text,
+                builder =>
+                {
+                    builder.AllowAnyOrigin();
+                    //  builder.WithOrigins("url");
+                    builder.AllowAnyMethod();
+                    builder.AllowAnyHeader();
+                });
+            });
             services.AddDbContext<ProfileContext>(c =>
                     c.UseSqlServer(Configuration.GetConnectionString("ProfileConnection"),
                     b=>b.MigrationsAssembly(typeof(ProfileContext).Assembly.FullName)));
@@ -57,8 +68,9 @@ namespace ProfileAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            
             app.UseAuthorization();
+            app.UseCors(text);
 
             app.UseEndpoints(endpoints =>
             {

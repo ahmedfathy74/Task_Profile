@@ -149,13 +149,14 @@ body {
     top: 870px;
     left: 98px;
     width: 770px;
-    height: 460px;
+    height: 100%;
     /* UI Properties */
     background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 1px 5px #00000029;
     border-radius: 0px 4px 4px 4px;
     opacity: 1;
+    padding-left: 4px;
 }
 .workExpname {
     /* Layout Properties */
@@ -172,8 +173,27 @@ body {
     letter-spacing: 0px;
     color: #63BACF;
     opacity: 1;
+    padding-left:10px;
+    
 }
 .iconimg {
+    top: 888px;
+    left: 237px;
+    width: 13px;
+    height: 15px;
+    /* UI Properties */
+    border: 1px solid #00000000;
+    opacity: 1;
+}
+#tblProducts{
+    margin-left:20px;
+}
+.add-work-style {
+    margin-top:10px;
+    margin-left: 550px;
+    margin-bottom:10px;
+}
+.edit-work-style {
     top: 888px;
     left: 237px;
     width: 13px;
