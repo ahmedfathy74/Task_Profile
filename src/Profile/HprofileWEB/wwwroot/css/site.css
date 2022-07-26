@@ -193,12 +193,9 @@ body {
     margin-left: 550px;
     margin-bottom:10px;
 }
-.edit-work-style {
-    top: 888px;
-    left: 237px;
-    width: 13px;
-    height: 15px;
-    /* UI Properties */
-    border: 1px solid #00000000;
-    opacity: 1;
+.add-workdata {
+    text-align: right;
+}
+#updateid {
+    display:none;
 }

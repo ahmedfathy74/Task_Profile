@@ -56,16 +56,33 @@ namespace ProfileAPI.Controllers
         }
         [HttpPost]
         [ProducesResponseType(typeof(Experience), StatusCodes.Status201Created)]
-        public async Task<ActionResult> AddWork(Experience experience)
+        public async Task<ActionResult> AddWork(tempExp tempExp)
         {
-            await _repo.AddWork(experience);
+            var experience = new Experience()
+            {
+               ExpName = tempExp.ExpName,
+               CityName = tempExp.CityName,
+               CompanyName = tempExp.CompanyName,
+               JobDescription = tempExp.JobDescription,
+               ProfID =tempExp.ProfID
+            };
+           await _repo.AddWork(experience);
             return Ok(experience);
         }
         [HttpPut]
         [ProducesResponseType(typeof(Experience), StatusCodes.Status201Created)]
-        public async Task<ActionResult> update(Experience experience)
+        public async Task<ActionResult> update(tempExp tempExp)
         {
-            return Ok(await _repo.UpdateWork(experience));
+            Experience data = await _repo.GetByID(tempExp.expid);
+
+            data.ExpID = tempExp.expid;
+            data.ExpName = tempExp.ExpName;
+            data.CityName = tempExp.CityName;
+            data.CompanyName = tempExp.CompanyName;
+            data.JobDescription = tempExp.JobDescription;
+            data.ProfID = tempExp.ProfID;
+       
+            return Ok(await _repo.UpdateWork(data));
         }
 
         [HttpDelete("{id}")]

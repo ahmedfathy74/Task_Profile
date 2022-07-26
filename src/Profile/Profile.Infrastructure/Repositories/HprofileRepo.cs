@@ -47,6 +47,11 @@ namespace Profile.Infrastructure.Repositories
             await _context.SaveChangesAsync();
             return experience;
         }
+
+        public async Task<Experience> GetByID(int id)
+        {
+          return  await _context.Experiences.FindAsync(id);
+        }
     }
 }
 

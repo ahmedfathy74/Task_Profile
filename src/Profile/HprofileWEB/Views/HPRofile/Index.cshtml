@@ -26,23 +26,51 @@
                 <i class="fa-solid fa-plus"></i>
             </button>
         </span>
+        <div id="tblProducts">
+            @*<div class="card mb-3 " style="max-width: 700px;">
+                <div class="row g-0">
+                    <div class="col-md-1 p-3">
+                        <img src="~/img/icon-workexperience.png" />
+                    </div>
+                    <div class="col-md-11">
+                        <div class="card-body">
+                            <div class="row d-flex ">
+                                <span class="p-2 flex-grow-1 card-title titel-exper-style"></span>
+                                <div class="p-2">
+                                    <span class="expd">dfsarfgasdf</span>
+                                    <input type="hidden" id="" value=""/>
+                                    <button class="edit-work-style" onclick="updateitem()"> <i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button class="edit-work-style" onclick="deleteitem()"><i class="fa-solid fa-trash-can"></i></button>
+                                </div>
+                            </div>
+                            <p class="card-text company-exper-style"></p>
+                            <p class=" card-text des-exper-style"> </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>*@
+
+        </div>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
+        <div class="modal fade" id="exampleModal"
+             tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">HprofileWorkExperience</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body" id="form1">
-                        <form>
+                    <div class="modal-body">
+                        <form id="form1" method="post">
+
                             <div class="mb-3">
-                                <label for="Title-name" class="col-form-label">Title*</label>
-                                <input type="text" class="form-control" id="Title-name">
+                                <label for="expName" class="col-form-label">Title*</label>
+                                <input type="text" class="form-control" id="expName">
                             </div>
                             <div class="mb-3">
-                                <label for="Employer-name" class="col-form-label">Employer*</label>
-                                <input type="text" class="form-control" id="Employer-name">
+                                <label for="companyName" class="col-form-label">Employer*</label>
+                                <input type="text" class="form-control" id="companyName">
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -110,12 +138,12 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="City-name" class="col-form-label">City / Branch</label>
-                                <input type="text" class="form-control" id="City-name">
+                                <label for="cityName" class="col-form-label">City / Branch</label>
+                                <input type="text" class="form-control" id="cityName">
                             </div>
                             <div class="mb-3">
-                                <label for="message-text" class="col-form-label">My job Description And Responsibalites</label>
-                                <textarea class="form-control" id="message-text"></textarea>
+                                <label for="jobDescription" class="col-form-label">My job Description And Responsibalites</label>
+                                <textarea class="form-control" id="jobDescription"></textarea>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="SkillBank">
@@ -123,41 +151,23 @@
                                     SkillBankHelpful
                                 </label>
                             </div>
-                            <button type="button" class="btn btn-primary add-workdata">Save changes</button>
-                            @*<button type="button" class="btn btn-primary add-workdata" onclick="triggerAdd()">Save changes</button>*@
+                            @*<button type="button" class="btn btn-primary add-workdata">Save changes</button>*@
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary add-workdata" id="addid" onclick="triggerAdd()">Add</button>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary add-workdata" id="updateid" onclick="UPDATEDATA()">Update</button>
+                            </div>
                         </form>
                     </div>
                     @*<div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        
+
                     </div>*@
                 </div>
             </div>
         </div>
-        <div id="tblProducts">
-            @*<div class="card mb-3 " style="max-width: 700px;">
-                <div class="row g-0">
-                    <div class="col-md-1 p-3">
-                        <img src="~/img/icon-workexperience.png" />
-                    </div>
-                    <div class="col-md-11">
-                        <div class="card-body">
-                            <div class="row d-flex ">
-                                <span class="p-2 flex-grow-1 card-title titel-exper-style"></span>
-                                <div class="p-2 ">
-                                    <button class="edit-work-style"> <i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button class="edit-work-style"><i class="fa-solid fa-trash-can"></i></button>
-                                </div>
-                            </div>
-                            <p class="card-text company-exper-style"></p>
-                            <p class=" card-text des-exper-style"> </p>
-                        </div>
 
-                    </div>
-                </div>
-            </div>*@
-
-        </div>
 
 
     </div>

@@ -10,6 +10,7 @@ namespace Profile.Infrastructure.Repositories.Base
     public interface IHprofileRepo
     {
         Task<IEnumerable<Experience>> GetALLByID(int id);
+        Task<Experience> GetByID(int id);
         Task<IEnumerable<Experience>> GetALLByID();
         Task AddWork(Experience experience);
         Task DeleteWork(int id);
