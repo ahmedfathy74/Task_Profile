@@ -10,47 +10,47 @@ using System.Threading.Tasks;
 
 namespace Profile.Infrastructure.Repositories
 {
-    public class HprofileRepo : IHprofileRepo
+    public class HprofileRepo <T>: IHprofileRepo<T> where T :class
     {
         private readonly ProfileContext _context;
         public HprofileRepo(ProfileContext context)
         {
             _context = context;
         }
-        public async Task<IEnumerable<Experience>> GetALLByID()
+        public async Task<IEnumerable<T>> GetALLByID()
         {
-            return await _context.Experiences.ToListAsync();
+            return await _context.Set<T>().ToListAsync();
         }
-        public async Task<IEnumerable<Experience>> GetALLByID(int id)
+        //public async Task<IEnumerable<T>> GetALLByID(int id)
+        //{
+        //    var WorrkExperience_List = await _context.Set<T>()
+        //              .Where<T>(E<T> => E. == id)
+        //              .ToListAsync();
+        //    return WorrkExperience_List;
+        //}
+        public async Task AddWork(T Entity)
         {
-            var WorrkExperience_List = await _context.Experiences
-                      .Where(E => E.ProfID ==id)
-                      .ToListAsync();
-            return WorrkExperience_List;
-        }
-        public async Task AddWork(Experience experience)
-        {
-            await _context.Experiences.AddAsync(experience);
+            await _context.Set<T>().AddAsync(Entity);
             await _context.SaveChangesAsync();
         }
 
         public async Task DeleteWork(int id)
         {
-            var experiencess = await _context.Experiences.FindAsync(id);
-            _context.Experiences.Remove(experiencess);
+            var experiencess = await _context.Set<T>().FindAsync(id);
+            _context.Set<T>().Remove(experiencess);
             await _context.SaveChangesAsync();
         }
 
-       public async Task<Experience> UpdateWork(Experience experience)
+       public async Task<T> UpdateWork(T Entity)
         {
-             _context.Experiences.Update(experience);
+             _context.Set<T>().Update(Entity);
             await _context.SaveChangesAsync();
-            return experience;
+            return Entity;
         }
 
-        public async Task<Experience> GetByID(int id)
+        public async Task<T> GetByID(int id)
         {
-          return  await _context.Experiences.FindAsync(id);
+          return  await _context.Set<T>().FindAsync(id);
         }
     }
 }

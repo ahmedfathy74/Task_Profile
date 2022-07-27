@@ -2,15 +2,79 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-    
+
+let strcompanies = [];
+let titlessuggestions = [];
 
 $(document).ready(function () {
+    $(".add-work-style").click(function () {
+        $('#expName').val("");
+        $('#companyName').val("");
+        $('#cityName').val("");
+        $('#jobDescription').val("");
+        $(".invalid-feedback").hide();
+    });
+    $(".invalid-feedback").hide();
     $("#updateid").hide();
-    getall(); 
+    getall();
+    getautodataCompanies();
+    getalltitles();
+       // Example starter JavaScript for disabling form submissions if there are invalid fields
+    //var form = document.querySelector('.needs-validation');
+    //console.log(e);
+    ////form.addEventListener('submit', function (event) {
+    ////      console.log(event);
+    ////    form.classList.add('was-validated')
+    ////}, false);
+
+    $("#addid").click(function (e) {
+        var form = document.querySelector('.needs-validation');
+        let titlename = $('#expName').val();
+        let employername = $('#companyName').val();
+        let cityname = $('#cityName').val();
+        let jobdescription = $('#jobDescription').val();
+        if (titlename.length == "" || employername.length == "" || cityname.length == "" || jobdescription.length == "") {
+            e.preventDefault();
+            $(".invalid-feedback").show();
+        }
+        form.classList.add('was-validated');
+    });
 });
 
-function triggerAdd() {
+function getautodataCompanies() {
+    $.ajax({
+        method: "GET",
+        url: "https://localhost:44314/api/Companies",
+        dataType: "json",
+        success: function (data) {
+            $.each(data, function (i, item) {
+                strcompanies.push(item.companyName);
+            });
+            console.log(strcompanies);
+        },
+        error: function (ex) {
+        }
 
+    });
+}
+
+function getalltitles() {
+    $.ajax({
+        method: "GET",
+        url: "https://localhost:44314/api/Titles",
+        dataType: "json",
+        success: function (data) {
+            $.each(data, function (i, item) {
+                titlessuggestions.push(item.jobName);
+            });        
+        },
+        error: function (ex) {
+        }
+
+    });
+}
+
+function triggerAdd() {  
     var myModel =
     {
         "expName": $('#expName').val(),
@@ -25,7 +89,7 @@ function triggerAdd() {
     //console.log($("#form1").val());
     //var data = $("#form1").serialize();
     //console.log(data);
-    //alert(data);
+    alert(data);
     $.ajax({
         method:"Post",
         url: "https://localhost:44314/api/HprofileWExp",
@@ -37,8 +101,6 @@ function triggerAdd() {
             $("#exampleModal").modal('hide');
         },
         error: function (ex) {
-
-            alert("Message:No,data not added ");
         }
 
     });
@@ -95,12 +157,14 @@ function updateexp(eventObj)
     $('#companyName').val(eventObj.companyName);
     $('#cityName').val(eventObj.cityName);
     $('#jobDescription').val(eventObj.jobDescription);
+    $('#expid').val(eventObj.expID);
 };
 
 function UPDATEDATA()
 {
     var myModel =
     {
+        "expid": $('#expid').val(),
         "expName": $('#expName').val(),
         "companyName": $('#companyName').val(),
         "cityName": $('#cityName').val(),

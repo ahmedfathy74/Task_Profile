@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace Profile.Infrastructure.Repositories.Base
 {
-    public interface IHprofileRepo
+    public interface IHprofileRepo <T> where T:class 
     {
-        Task<IEnumerable<Experience>> GetALLByID(int id);
-        Task<Experience> GetByID(int id);
-        Task<IEnumerable<Experience>> GetALLByID();
-        Task AddWork(Experience experience);
+        Task<T> GetByID(int id);
+        Task<IEnumerable<T>> GetALLByID();
+        Task AddWork(T experience);
         Task DeleteWork(int id);
-        Task<Experience> UpdateWork(Experience experience);
+        Task<T> UpdateWork(T experience);
     }
 }

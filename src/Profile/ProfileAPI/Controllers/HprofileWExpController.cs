@@ -15,17 +15,18 @@ namespace ProfileAPI.Controllers
     [ApiController]
     public class HprofileWExpController : ControllerBase
     {
-        private readonly IHprofileRepo _repo;
+        private readonly IHprofileRepo<Experience> _repoExperience;
+        //private readonly IHprofileRepo<City> _repoCity;
         private readonly ILogger<Experience> _logger;
-        public HprofileWExpController(IHprofileRepo repo)
+        public HprofileWExpController(IHprofileRepo<Experience> repo)
         {
-            _repo = repo;
+            _repoExperience = repo;
         }
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Experience>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<Experience>>> GetALLByID()
         {
-            var ALLWorkExper = await _repo.GetALLByID();
+            var ALLWorkExper = await _repoExperience.GetALLByID();
             //if (ALLWorkExper == null)
             //{
             //    _logger.LogError($"Work Experience with {id} not found");
@@ -38,22 +39,22 @@ namespace ProfileAPI.Controllers
             return Ok(ALLWorkExper);
         }
        // [HttpGet("{id:length(24)}")]
-        [HttpGet("{id}")]
+        //[HttpGet("{id}")]
        // [ProducesResponseType(typeof(IEnumerable<Experience>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<Experience>>> GetALLByID(int id)
-        {
-            var ALLWorkExper = await _repo.GetALLByID(id);
-            //if (ALLWorkExper == null)
-            //{
-            //    _logger.LogError($"Work Experience with {id} not found");
-            //    return NotFound();
-            //}
-            //else
-            //{
-            //    return Ok(ALLWorkExper);
-            //}
-            return Ok(ALLWorkExper);
-        }
+        //public async Task<ActionResult<IEnumerable<Experience>>> GetALLByID(int id)
+        //{
+        //    var ALLWorkExper = await _repoExperience.GetALLByID(id);
+        //    //if (ALLWorkExper == null)
+        //    //{
+        //    //    _logger.LogError($"Work Experience with {id} not found");
+        //    //    return NotFound();
+        //    //}
+        //    //else
+        //    //{
+        //    //    return Ok(ALLWorkExper);
+        //    //}
+        //    return Ok(ALLWorkExper);
+        //}
         [HttpPost]
         [ProducesResponseType(typeof(Experience), StatusCodes.Status201Created)]
         public async Task<ActionResult> AddWork(tempExp tempExp)
@@ -66,14 +67,14 @@ namespace ProfileAPI.Controllers
                JobDescription = tempExp.JobDescription,
                ProfID =tempExp.ProfID
             };
-           await _repo.AddWork(experience);
+           await _repoExperience.AddWork(experience);
             return Ok(experience);
         }
         [HttpPut]
         [ProducesResponseType(typeof(Experience), StatusCodes.Status201Created)]
         public async Task<ActionResult> update(tempExp tempExp)
         {
-            Experience data = await _repo.GetByID(tempExp.expid);
+            Experience data = await _repoExperience.GetByID(tempExp.expid);
 
             data.ExpID = tempExp.expid;
             data.ExpName = tempExp.ExpName;
@@ -82,13 +83,13 @@ namespace ProfileAPI.Controllers
             data.JobDescription = tempExp.JobDescription;
             data.ProfID = tempExp.ProfID;
        
-            return Ok(await _repo.UpdateWork(data));
+            return Ok(await _repoExperience.UpdateWork(data));
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> delete(int id)
         {
-            await _repo.DeleteWork(id);
+            await _repoExperience.DeleteWork(id);
             return Ok();
         }
 

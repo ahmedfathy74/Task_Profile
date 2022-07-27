@@ -62,33 +62,62 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="form1" method="post">
-
+                        <form id="form1" onsubmit=""  method="post" class="needs-validation" novalidate>
+                            <input type="hidden" class="form-control" id="expid">
                             <div class="mb-3">
+
                                 <label for="expName" class="col-form-label">Title*</label>
-                                <input type="text" class="form-control" id="expName">
+                                <div class="wrapper">
+                                    <div class="search-input expsearch">
+                                        <a href="" target="_blank" hidden></a>
+                                        <input type="text" class="form-control" id="expName" placeholder="Ex: Software Engineer" required>
+                                        <div class="autocom-box">
+                                            <!-- here list are inserted from javascript -->
+                                        </div>
+                                        @*<div class="icon"><i class="fas fa-search"></i></div>*@
+
+                                    </div>
+                                </div>
+                                
+                                <div class="invalid-feedback">
+                                    Please choose a Title.
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="companyName" class="col-form-label">Employer*</label>
-                                <input type="text" class="form-control" id="companyName">
+                                <div class="wrapper">
+                                    <div class="search-input jobsearch">
+                                        <a href="" target="_blank" hidden></a>
+                                        <input type="text" class="form-control" id="companyName" placeholder="Ex: Hits" required>
+                                        <div class="autocom-box">
+                                            <!-- here list are inserted from javascript -->
+                                        </div>
+                                        @*<div class="icon"><i class="fas fa-search"></i></div>*@
+                                    </div>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please choose a Employer.
+                                </div>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
                                 <label class="form-check-label" for="flexCheckDefault">
                                     I am currently working in this role
                                 </label>
+                                <div class="invalid-feedback">
+                                    please, check the currently working.
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="StartDate" class="col-form-label">StartDate*</label>
                                 <label for="EndDate" class="col-form-label" style="margin-left: 140px;">EndDate*</label>
                             </div>
                             <div class="mb-3">
-
                                 <div class="btn-group">
                                     <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Month
                                     </button>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu" required>
                                         li>
                                         <a class="dropdown-item" href="#">Action</a></li>
                                         <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -101,7 +130,7 @@
                                     <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Year
                                     </button>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu" required>
                                         li>
                                         <a class="dropdown-item" href="#">Action</a></li>
                                         <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -114,7 +143,7 @@
                                     <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Month
                                     </button>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu" required>
                                         li>
                                         <a class="dropdown-item" href="#">Action</a></li>
                                         <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -127,7 +156,7 @@
                                     <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Year
                                     </button>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu" required>
                                         li>
                                         <a class="dropdown-item" href="#">Action</a></li>
                                         <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -139,21 +168,37 @@
                             </div>
                             <div class="mb-3">
                                 <label for="cityName" class="col-form-label">City / Branch</label>
-                                <input type="text" class="form-control" id="cityName">
+                                <div class="wrapper">
+                                    <div class="search-input citysearch">
+                                        <a href="" target="_blank" hidden></a>
+                                        <input type="text" class="form-control" id="cityName" placeholder="Ex: Cairo" required>
+                                        <div class="autocom-box">
+                                            <!-- here list are inserted from javascript -->
+                                        </div>
+                                        @*<div class="icon"><i class="fas fa-search"></i></div>*@
+                                    </div>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please choose a city name.
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="jobDescription" class="col-form-label">My job Description And Responsibalites</label>
-                                <textarea class="form-control" id="jobDescription"></textarea>
+                                <textarea class="form-control" id="jobDescription" placeholder="Enter your job description" required></textarea>
+                                <div class="invalid-feedback">
+                                    Please enter a Job Description in the textarea.
+                                </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="SkillBank">
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" value="" id="SkillBank" required>
                                 <label class="form-check-label" for="SkillBank">
                                     SkillBankHelpful
                                 </label>
+                                <div class="invalid-feedback">SkillBankHelpful is required</div>
                             </div>
                             @*<button type="button" class="btn btn-primary add-workdata">Save changes</button>*@
                             <div class="form-group">
-                                <button type="button" class="btn btn-primary add-workdata" id="addid" onclick="triggerAdd()">Add</button>
+                                <button type="submit" class="btn btn-primary add-workdata" id="addid" onclick="triggerAdd($event)">Add</button>
                             </div>
                             <div class="form-group">
                                 <button type="button" class="btn btn-primary add-workdata" id="updateid" onclick="UPDATEDATA()">Update</button>

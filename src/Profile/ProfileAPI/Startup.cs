@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Profile.Core.Entities;
 using Profile.Infrastructure.Data;
 using Profile.Infrastructure.Repositories;
 using Profile.Infrastructure.Repositories.Base;
@@ -46,7 +47,9 @@ namespace ProfileAPI
             services.AddDbContext<ProfileContext>(c =>
                     c.UseSqlServer(Configuration.GetConnectionString("ProfileConnection"),
                     b=>b.MigrationsAssembly(typeof(ProfileContext).Assembly.FullName)));
-            services.AddTransient(typeof(IHprofileRepo), typeof(HprofileRepo));
+            services.AddTransient(typeof(IHprofileRepo<Experience>), typeof(HprofileRepo<Experience>));
+            services.AddTransient(typeof(IHprofileRepo<Company>), typeof(HprofileRepo<Company>));
+            services.AddTransient(typeof(IHprofileRepo<Job>), typeof(HprofileRepo<Job>));
 
 
             services.AddSwaggerGen(c =>
