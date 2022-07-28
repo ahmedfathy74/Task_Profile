@@ -23,8 +23,8 @@ namespace Profile.Infrastructure.Repositories
         }
         //public async Task<IEnumerable<T>> GetALLByID(int id)
         //{
-        //    var WorrkExperience_List = await _context.Set<T>()
-        //              .Where<T>(E<T> => E. == id)
+        //    var WorrkExperience_List = await _context.Experience
+        //              .Where(E => E.profID == id)
         //              .ToListAsync();
         //    return WorrkExperience_List;
         //}

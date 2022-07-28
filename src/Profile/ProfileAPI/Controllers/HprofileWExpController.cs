@@ -65,6 +65,10 @@ namespace ProfileAPI.Controllers
                CityName = tempExp.CityName,
                CompanyName = tempExp.CompanyName,
                JobDescription = tempExp.JobDescription,
+               //CurrentlyWork = tempExp.CurrentlyWork,
+               //SkillBank = tempExp.SkillBank,
+               StartDate = tempExp.StartDate,
+               EndDate = tempExp.EndDate,
                ProfID =tempExp.ProfID
             };
            await _repoExperience.AddWork(experience);
@@ -81,6 +85,8 @@ namespace ProfileAPI.Controllers
             data.CityName = tempExp.CityName;
             data.CompanyName = tempExp.CompanyName;
             data.JobDescription = tempExp.JobDescription;
+            data.StartDate = tempExp.StartDate;
+            data.EndDate = tempExp.EndDate;
             data.ProfID = tempExp.ProfID;
        
             return Ok(await _repoExperience.UpdateWork(data));

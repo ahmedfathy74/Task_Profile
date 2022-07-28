@@ -253,3 +253,11 @@ body {
 .autocom-box li:hover {
     background: #efefef;
 }
+select {
+    padding: 0 10px;
+    font-size: 22px;
+    width:24%;
+}
+select option {
+    padding: 0 10px;
+}
